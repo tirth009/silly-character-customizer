@@ -86,9 +86,49 @@ display the character's attributes in a creative and humorous way.
 
 
 // Function to generate a random character description
+function generateRandomCharacter() {
+    characterName = getRandomItem(sillyNames);
+    favoriteFood = getRandomItem(foods);
+
+    // Random age between 5 and 80
+    age = Math.floor(Math.random() * 76) + 5;
+
+    // Random boolean (superhero or not)
+    isSuperhero = Math.random() < 0.5;
+
+    // Choose 2–3 random powers
+    specialPowers = [];
+    const howManyPowers = Math.floor(Math.random() * 2) + 2; // 2 or 3
+    while (specialPowers.length < howManyPowers) {
+        const power = getRandomItem(powersList);
+        if (!specialPowers.includes(power)) {
+            specialPowers.push(power);
+        }
+    }
+
+    updateCharacterDescription();
+}
+
 
 
 // Functions to update character's age
+function updateCharacterDescription() {
+    const descriptionElement = document.querySelector("#characterDescription");
+
+    const heroText = isSuperhero
+        ? "a mighty superhero"
+        : "a totally ordinary (but very silly) human";
+
+    const powersText =
+        specialPowers.length > 0
+            ? `Their special powers include: ${specialPowers.join(", ")}.`
+            : "They don't seem to have any special powers... yet.";
+
+    const description = `Meet ${characterName}, a ${age}-year-old ${heroText} who loves ${favoriteFood}! ${powersText}`;
+
+    descriptionElement.textContent = description;
+}
+
 
 
 
@@ -98,3 +138,5 @@ display the character's attributes in a creative and humorous way.
 
 // Add event listeners for buttons using querySelector
 
+// Generate a character when the page first loads
+generateRandomCharacter();
