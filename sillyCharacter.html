@@ -7,13 +7,31 @@
 </head>
 <body>
     <h1>Silly Character Customizer</h1>
-    <p id="characterDescription"></p>
-    <p></p>
 
+    <!-- Where the funny description will show -->
+    <p id="characterDescription"></p>
+
+    <!-- User inputs to customize the character -->
+    <div>
+        <label for="nameInput">Change Name:</label>
+        <input type="text" id="nameInput" placeholder="Enter a new silly name">
+    </div>
+
+    <div>
+        <label for="ageInput">Set Age:</label>
+        <input type="number" id="ageInput" min="1" max="120" placeholder="Enter age">
+    </div>
+
+    <button id="updateCharacterButton">Update Character</button>
+
+    <br><br>
+
+    <!-- Buttons to randomize and tweak age -->
     <button id="generateButton">Generate Random Character</button>
     <button id="increaseAgeButton">Increase Age</button>
     <button id="decreaseAgeButton">Decrease Age</button>
 
-    <script src="js/sillyCharacter.js"></script>
+    <!-- If JS file is in same folder, use this -->
+    <script src="sillyCharacter.js"></script>
 </body>
 </html>

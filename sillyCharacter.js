@@ -1,24 +1,15 @@
 /* 
-Project: "Silly Character Customizer"
-Objective:
-You’ll create a small interactive webpage that generates a random, 
-funny character with attributes like name, age, favorite food, and special powers. 
-The user can also customize some aspects like updating the character's name or age.
+Silly Character Customizer - Lab Project
 
-Project Breakdown:
-Declare, Initialize, and Update Variables:
+This script:
+- Declares variables for character attributes
+- Randomly generates a silly character
+- Lets the user change the character's name and age
+- Updates a funny description on the page
+*/
 
-You’ll create variables to store different character attributes 
-(name, age, favorite food, etc.).
-Users will have the option to update some of these variables, like 
-changing the character’s name or age.
+// ----------------- Character Attributes -----------------
 
-Use different data types for each attribute:
-characterName (string)
-Age (number)
-Is the character a superhero? (boolean)
-Special powers (array)
-Favorite food (string)
 // string
 let characterName = "Captain Waffles";
 
@@ -33,7 +24,9 @@ let specialPowers = [];
 
 // string
 let favoriteFood = "pizza";
-// Options to randomize from
+
+// ----------------- Random Data Lists -----------------
+
 const sillyNames = [
     "Captain Waffles",
     "Sir Noodleface",
@@ -67,23 +60,7 @@ function getRandomItem(list) {
     return list[index];
 }
 
-
-Conduct Basic Math Operations:
-
-You can randomly generate the character's age using math operations.
-You could also include a small feature where the character's age increases 
-or decreases when a button is clicked.
-Create and Manipulate Strings:
-
-Use string manipulation to generate a funny description of the character 
-based on the data. You can concatenate strings or use template literals to 
-display the character's attributes in a creative and humorous way.
-
-*/
-
-// Declare and initialize variables
-
-
+// ----------------- Random Character Generator -----------------
 
 // Function to generate a random character description
 function generateRandomCharacter() {
@@ -109,9 +86,43 @@ function generateRandomCharacter() {
     updateCharacterDescription();
 }
 
-
+// ----------------- Age & Input Updates -----------------
 
 // Functions to update character's age
+function increaseAge() {
+    age++;
+    updateCharacterDescription();
+}
+
+function decreaseAge() {
+    if (age > 0) {
+        age--;
+    }
+    updateCharacterDescription();
+}
+
+// Update character from user inputs (name + age)
+function updateCharacterFromInputs() {
+    const nameInput = document.querySelector("#nameInput");
+    const ageInput = document.querySelector("#ageInput");
+
+    if (nameInput && nameInput.value.trim() !== "") {
+        characterName = nameInput.value.trim();
+    }
+
+    if (ageInput && ageInput.value !== "") {
+        const newAge = Number(ageInput.value);
+        if (!Number.isNaN(newAge) && newAge > 0) {
+            age = newAge;
+        }
+    }
+
+    updateCharacterDescription();
+}
+
+// ----------------- Description Output -----------------
+
+// Function to update the character's description after changing age
 function updateCharacterDescription() {
     const descriptionElement = document.querySelector("#characterDescription");
 
@@ -129,14 +140,18 @@ function updateCharacterDescription() {
     descriptionElement.textContent = description;
 }
 
-
-
-
-
-// Function to update the character's description after changing age
-
+// ----------------- Event Listeners -----------------
 
 // Add event listeners for buttons using querySelector
+const generateButton = document.querySelector("#generateButton");
+const increaseAgeButton = document.querySelector("#increaseAgeButton");
+const decreaseAgeButton = document.querySelector("#decreaseAgeButton");
+const updateCharacterButton = document.querySelector("#updateCharacterButton");
+
+generateButton.addEventListener("click", generateRandomCharacter);
+increaseAgeButton.addEventListener("click", increaseAge);
+decreaseAgeButton.addEventListener("click", decreaseAge);
+updateCharacterButton.addEventListener("click", updateCharacterFromInputs);
 
 // Generate a character when the page first loads
 generateRandomCharacter();
