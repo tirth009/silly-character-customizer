@@ -19,6 +19,55 @@ Age (number)
 Is the character a superhero? (boolean)
 Special powers (array)
 Favorite food (string)
+// string
+let characterName = "Captain Waffles";
+
+// number
+let age = 0;
+
+// boolean
+let isSuperhero = false;
+
+// array
+let specialPowers = [];
+
+// string
+let favoriteFood = "pizza";
+// Options to randomize from
+const sillyNames = [
+    "Captain Waffles",
+    "Sir Noodleface",
+    "Princess Pickles",
+    "Doctor Donut",
+    "Lady Bubblegum",
+    "Professor Pudding"
+];
+
+const foods = [
+    "pizza",
+    "spicy noodles",
+    "chocolate-covered broccoli",
+    "marshmallow tacos",
+    "rainbow pancakes",
+    "extra-cheesy nachos"
+];
+
+const powersList = [
+    "can sneeze glitter",
+    "can talk to squirrels",
+    "can fly faster than light",
+    "can turn invisible when nobody is looking",
+    "can summon endless snacks",
+    "can time-travel but only to lunchtime"
+];
+
+// Helper: get a random item from an array
+function getRandomItem(list) {
+    const index = Math.floor(Math.random() * list.length);
+    return list[index];
+}
+
+
 Conduct Basic Math Operations:
 
 You can randomly generate the character's age using math operations.
